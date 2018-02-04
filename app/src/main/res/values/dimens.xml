@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spaceXXL">100dp</dimen>
+    <dimen name="spaceXL">36dp</dimen>
+    <dimen name="spaceL">24dp</dimen>
+    <dimen name="spaceM">16dp</dimen>
+    <dimen name="spaceS">8dp</dimen>
+    <dimen name="lineWeight">1dp</dimen>
+    <dimen name="space0">0dp</dimen>
+    <dimen name="textSizeS">16sp</dimen>
+    <dimen name="textSizeL">24sp</dimen>
+    <dimen name="textSizeXL">36sp</dimen>
+    <dimen name="textSizeXXL">60sp</dimen>
+</resources>

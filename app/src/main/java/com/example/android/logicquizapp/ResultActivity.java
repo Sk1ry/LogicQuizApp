@@ -10,9 +10,9 @@ public class ResultActivity extends QuizActivity {
     int finalPoints;
     int percent;
     TextView resultPercentage;
-    String mailBodySad;
-    String mailBodyHappy;
-    String mailBody;
+    String bodySad;
+    String bodyHappy;
+    String body;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,21 +39,20 @@ public class ResultActivity extends QuizActivity {
 
         String subject = getString(R.string.result_email_subject);
         String finalResult = percent + getString(R.string.percent);
-        mailBodySad = getString(R.string.email_body2) + "  " + nameVal + "\n" + getString(R.string.email_body3) + " " + finalResult + "\n" + getString(R.string.email_body4);
-        mailBodyHappy = getString(R.string.email_body) + "  " + nameVal + "\n" + getString(R.string.email_body1) + " " + finalResult;
+        bodySad = getString(R.string.email_body2) + "  " + nameVal + "\n" + getString(R.string.email_body3) + " " + finalResult + "\n" + getString(R.string.email_body4);
+        bodyHappy = getString(R.string.email_body) + "  " + nameVal + "\n" + getString(R.string.email_body1) + " " + finalResult;
 
         if (percent < 50) {
-            mailBody = mailBodySad;
+            body = bodySad;
         } else {
-            mailBody = mailBodyHappy;
+            body = bodyHappy;
         }
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, subject + " " + nameVal);
-        intent.putExtra(Intent.EXTRA_TEXT, mailBody);
+        intent.putExtra(Intent.EXTRA_TEXT, body);
         startActivity(Intent.createChooser(intent, "Share using"));
-
     }
 
     /**

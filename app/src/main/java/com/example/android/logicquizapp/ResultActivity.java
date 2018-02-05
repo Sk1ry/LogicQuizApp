@@ -20,7 +20,7 @@ public class ResultActivity extends QuizActivity {
         setContentView(R.layout.activity_result);
 
         finalPoints = getIntent().getExtras().getInt("points");
-        percent = (finalPoints * 100) / 5;
+        percent = (finalPoints * 100) / 4;
 
         resultPercentage = (TextView) findViewById(R.id.result_percentage);
         resultPercentage.setText(percent + getString(R.string.percent));
@@ -48,15 +48,12 @@ public class ResultActivity extends QuizActivity {
             mailBody = mailBodyHappy;
         }
 
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, getString(R.string.address));
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, subject + " " + nameVal);
         intent.putExtra(Intent.EXTRA_TEXT, mailBody);
+        startActivity(Intent.createChooser(intent, "Share using"));
 
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
     }
 
     /**

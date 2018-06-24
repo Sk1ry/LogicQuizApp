@@ -3,8 +3,10 @@ package com.example.android.logicquizapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultActivity extends QuizActivity {
     int finalPoints;
@@ -26,6 +28,10 @@ public class ResultActivity extends QuizActivity {
         resultPercentage.setText(percent + getString(R.string.percent));
 
         nameVal = getIntent().getExtras().getString("userName");
+
+        Toast myToast = new Toast(this);
+        myToast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        myToast.makeText(this, "Your quiz score is "+ percent + " out of 100", Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -61,5 +67,6 @@ public class ResultActivity extends QuizActivity {
     public void restartActivity(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

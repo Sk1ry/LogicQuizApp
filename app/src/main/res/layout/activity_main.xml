@@ -7,35 +7,31 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/layout_matchp"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/intro"
-            android:textSize="@dimen/textSizeL"
-            android:textColor="@color/colorDark"
-            android:paddingTop="@dimen/spaceS"
+            style="@style/layout"
+            android:gravity="center"
             android:paddingBottom="@dimen/spaceS"
-            android:gravity="center" />
+            android:paddingTop="@dimen/spaceS"
+            android:text="@string/intro"
+            android:textColor="@color/colorDark"
+            android:textSize="@dimen/textSizeL" />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/layout_matchp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:src="@drawable/background1" />
 
         <EditText
             android:id="@+id/your_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spaceS"
+            style="@style/layout"
             android:layout_marginBottom="@dimen/spaceS"
             android:layout_marginLeft="@dimen/textSizeXL"
             android:layout_marginRight="@dimen/textSizeXL"
+            android:layout_marginTop="@dimen/spaceS"
             android:backgroundTint="@color/colorPrimaryDark"
             android:hint="@string/name_val"
             android:inputType="textCapWords"
@@ -44,8 +40,7 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/layout_wrap"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/textSizeS"
             android:layout_weight="0"

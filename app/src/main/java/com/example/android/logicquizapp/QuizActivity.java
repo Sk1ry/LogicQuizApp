@@ -35,14 +35,13 @@ public class QuizActivity extends MainActivity {
         String goodQ1 = "Nicholas";
 
         EditText textField = (EditText) findViewById(R.id.question_1_answer);
-        String question1Val = textField.getText().toString();
+        String question1Val = textField.getText().toString().trim();
 
         // Check 1st answer for EDIT TEXT
 
-        if (question1Val.equals(goodQ1)) {
+        if (question1Val.equalsIgnoreCase(goodQ1)) {
             points += 1;
         }
-
         // Check 2nd answer for question 2 True/False radio buttons
 
         List<Boolean> question2Answers = new ArrayList<Boolean>();
@@ -68,8 +67,10 @@ public class QuizActivity extends MainActivity {
         question3Answers.add(andQues3_5.isChecked());
         CheckBox andQues3_6 = findViewById(R.id.wrong_answer_3_6);
         question3Answers.add(andQues3_6.isChecked());
-        isCorrect(question3Answers, 1);
-        isCorrect(question3Answers, 5);
+
+        if (!(isCorrectQ3(question3Answers, 0)) && !(isCorrectQ3(question3Answers, 2)) && !(isCorrectQ3(question3Answers, 3)) && !(isCorrectQ3(question3Answers, 4)) && (isCorrectQ3(question3Answers, 1)) && (isCorrectQ3(question3Answers, 5))) {
+            points += 1;
+        }
 
         // Check 4th answer for question 4 with radio buttons
 
@@ -88,14 +89,29 @@ public class QuizActivity extends MainActivity {
         openResult.putExtra("points", points);
         openResult.putExtra("userName", nameVal);
         startActivity(openResult);
+        finish();
     }
 
     /**
      * isCorrect method will check the correct answers and increment the points for questions that return boolean values
      */
     private void isCorrect(List<Boolean> elemList, int index) {
-        if (elemList.indexOf(true) == index) {
-            points += 1;
+        int foundIndex = 0;
+        for (Boolean x : elemList) {
+            if (x == Boolean.TRUE && foundIndex == index) {
+                points += 1;
+            }
+            foundIndex++;
         }
+    }
+    private boolean isCorrectQ3(List<Boolean> elemList, int index) {
+        int foundIndex = 0;
+        for (Boolean x : elemList) {
+            if (x == Boolean.TRUE && foundIndex == index) {
+                return true;
+            }
+            foundIndex++;
+        }
+        return false;
     }
 }

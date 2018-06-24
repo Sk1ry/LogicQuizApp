@@ -104,6 +104,7 @@ public class QuizActivity extends MainActivity {
             foundIndex++;
         }
     }
+
     private boolean isCorrectQ3(List<Boolean> elemList, int index) {
         int foundIndex = 0;
         for (Boolean x : elemList) {
